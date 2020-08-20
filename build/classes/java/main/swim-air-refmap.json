@@ -1,0 +1,16 @@
+{
+  "mappings": {
+    "net/ludocrypt/swimair/mixin/EntityMixin": {
+      "isTouchingWater": "Lnet/minecraft/class_1297;method_5799()Z",
+      "isSubmergedIn": "Lnet/minecraft/class_1297;method_5777(Lnet/minecraft/class_3494;)Z"
+    }
+  },
+  "data": {
+    "named:intermediary": {
+      "net/ludocrypt/swimair/mixin/EntityMixin": {
+        "isTouchingWater": "Lnet/minecraft/class_1297;method_5799()Z",
+        "isSubmergedIn": "Lnet/minecraft/class_1297;method_5777(Lnet/minecraft/class_3494;)Z"
+      }
+    }
+  }
+}
