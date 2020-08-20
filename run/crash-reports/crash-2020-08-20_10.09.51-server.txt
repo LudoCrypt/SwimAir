@@ -1,0 +1,113 @@
+---- Minecraft Crash Report ----
+// Who set us up the TNT?
+
+Time: 8/20/20 10:09 AM
+Description: Ticking player
+
+org.spongepowered.asm.mixin.injection.callback.CancellationException: The call updateWaterSubmersionState is not cancellable.
+	at org.spongepowered.asm.mixin.injection.callback.CallbackInfo.cancel(CallbackInfo.java:101)
+	at org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable.setReturnValue(CallbackInfoReturnable.java:106)
+	at net.minecraft.entity.player.PlayerEntity.handler$zbd000$updateWaterSubmersionState(PlayerEntity.java:2099)
+	at net.minecraft.entity.player.PlayerEntity.updateWaterSubmersionState(PlayerEntity.java:281)
+	at net.minecraft.entity.player.PlayerEntity.tick(PlayerEntity.java:221)
+	at net.minecraft.server.network.ServerPlayerEntity.playerTick(ServerPlayerEntity.java:406)
+	at net.minecraft.server.network.ServerPlayNetworkHandler.tick(ServerPlayNetworkHandler.java:198)
+	at net.minecraft.network.ClientConnection.tick(ClientConnection.java:220)
+	at net.minecraft.server.ServerNetworkIo.tick(ServerNetworkIo.java:150)
+	at net.minecraft.server.MinecraftServer.tickWorlds(MinecraftServer.java:875)
+	at net.minecraft.server.MinecraftServer.tick(MinecraftServer.java:801)
+	at net.minecraft.server.integrated.IntegratedServer.tick(IntegratedServer.java:81)
+	at net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:659)
+	at net.minecraft.server.MinecraftServer.method_29739(MinecraftServer.java:224)
+	at java.lang.Thread.run(Unknown Source)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Server thread
+Stacktrace:
+	at org.spongepowered.asm.mixin.injection.callback.CallbackInfo.cancel(CallbackInfo.java:101)
+	at org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable.setReturnValue(CallbackInfoReturnable.java:106)
+	at net.minecraft.entity.player.PlayerEntity.handler$zbd000$updateWaterSubmersionState(PlayerEntity.java:2099)
+	at net.minecraft.entity.player.PlayerEntity.updateWaterSubmersionState(PlayerEntity.java:281)
+	at net.minecraft.entity.player.PlayerEntity.tick(PlayerEntity.java:221)
+
+-- Player being ticked --
+Details:
+	Entity Type: minecraft:player (net.minecraft.server.network.ServerPlayerEntity)
+	Entity ID: 206
+	Entity Name: Player60
+	Entity's Exact location: -72.50, 64.00, -236.50
+	Entity's Block location: World: (-73,64,-237), Chunk: (at 7,4,3 in -5,-15; contains blocks -80,0,-240 to -65,255,-225), Region: (-1,-1; contains chunks -32,-32 to -1,-1, blocks -512,0,-512 to -1,255,-1)
+	Entity's Momentum: 0.00, 0.00, 0.00
+	Entity's Passengers: []
+	Entity's Vehicle: ~~ERROR~~ NullPointerException: null
+Stacktrace:
+	at net.minecraft.server.network.ServerPlayerEntity.playerTick(ServerPlayerEntity.java:406)
+	at net.minecraft.server.network.ServerPlayNetworkHandler.tick(ServerPlayNetworkHandler.java:198)
+	at net.minecraft.network.ClientConnection.tick(ClientConnection.java:220)
+	at net.minecraft.server.ServerNetworkIo.tick(ServerNetworkIo.java:150)
+	at net.minecraft.server.MinecraftServer.tickWorlds(MinecraftServer.java:875)
+	at net.minecraft.server.MinecraftServer.tick(MinecraftServer.java:801)
+	at net.minecraft.server.integrated.IntegratedServer.tick(IntegratedServer.java:81)
+	at net.minecraft.server.MinecraftServer.runServer(MinecraftServer.java:659)
+	at net.minecraft.server.MinecraftServer.method_29739(MinecraftServer.java:224)
+	at java.lang.Thread.run(Unknown Source)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.16.2
+	Minecraft Version ID: 1.16.2
+	Operating System: Windows 10 (amd64) version 10.0
+	Java Version: 1.8.0_261, Oracle Corporation
+	Java VM Version: Java HotSpot(TM) 64-Bit Server VM (mixed mode), Oracle Corporation
+	Memory: 265393280 bytes (253 MB) / 1783103488 bytes (1700 MB) up to 3806855168 bytes (3630 MB)
+	CPUs: 16
+	JVM Flags: 0 total; 
+	Fabric Mods: 
+		fabric: Fabric API 0.18.0+build.397-1.16
+		fabric-api-base: Fabric API Base 0.1.3+12a8474c4e
+		fabric-blockrenderlayer-v1: Fabric BlockRenderLayer Registration (v1) 1.1.4+c6a8ea894e
+		fabric-command-api-v1: Fabric Command API (v1) 1.0.8+5ce533984e
+		fabric-commands-v0: Fabric Commands (v0) 0.2.0+52d308364e
+		fabric-containers-v0: Fabric Containers (v0) 0.1.8+045df74f4e
+		fabric-content-registries-v0: Fabric Content Registries (v0) 0.1.9+059ea8664e
+		fabric-crash-report-info-v1: Fabric Crash Report Info (v1) 0.1.2+b7f9825d4e
+		fabric-events-interaction-v0: Fabric Events Interaction (v0) 0.3.3+7066030f4e
+		fabric-events-lifecycle-v0: Fabric Events Lifecycle (v0) 0.2.0+16acbe5b4e
+		fabric-game-rule-api-v1: Fabric Game Rule API (v1) 1.0.1+91555cd14e
+		fabric-item-api-v1: Fabric Item API (v1) 1.0.0+16acbe5b4e
+		fabric-item-groups-v0: Fabric Item Groups (v0) 0.2.0+438f96364e
+		fabric-key-binding-api-v1: Fabric Key Binding API (v1) 1.0.1+730711c64e
+		fabric-keybindings-v0: Fabric Key Bindings (v0) 0.2.0+3fa9f7c54e
+		fabric-lifecycle-events-v1: Fabric Lifecycle Events (v1) 1.2.0+74cc3b204e
+		fabric-loot-tables-v1: Fabric Loot Tables (v1) 1.0.0+fac8f3664e
+		fabric-mining-levels-v0: Fabric Mining Levels (v0) 0.1.2+b764ce994e
+		fabric-models-v0: Fabric Models (v0) 0.1.0+dfdb52d64e
+		fabric-networking-blockentity-v0: Fabric Networking Block Entity (v0) 0.2.5+b50ffc7b4e
+		fabric-networking-v0: Fabric Networking (v0) 0.1.10+e00ecb5f4e
+		fabric-object-builder-api-v1: Fabric Object Builder API (v1) 1.6.0+e81ec80b4e
+		fabric-object-builders-v0: Fabric Object Builders (v0) 0.6.1+ba4afa574e
+		fabric-particles-v1: fabric-particles-v1 0.2.1+0a6f2a704e
+		fabric-registry-sync-v0: Fabric Registry Sync (v0) 0.4.3+e5d3217f4e
+		fabric-renderer-api-v1: Fabric Renderer API (v1) 0.2.13+eae12eb84e
+		fabric-renderer-indigo: Fabric Renderer - Indigo 0.3.4+5d32f5834e
+		fabric-renderer-registries-v1: Fabric Renderer Registries (v1) 2.1.0+e2862de64e
+		fabric-rendering-data-attachment-v1: Fabric Rendering Data Attachment (v1) 0.1.3+b7f9825d4e
+		fabric-rendering-fluids-v1: Fabric Rendering Fluids (v1) 0.1.10+e5d3217f4e
+		fabric-rendering-v0: Fabric Rendering (v0) 1.1.0+534104904e
+		fabric-rendering-v1: Fabric Rendering (v1) 1.2.0+fc24ff244e
+		fabric-resource-loader-v0: Fabric Resource Loader (v0) 0.2.9+e5d3217f4e
+		fabric-screen-handler-api-v1: Fabric Screen Handler API (v1) 1.1.0+872498414e
+		fabric-tag-extensions-v0: Fabric Tag Extensions (v0) 1.0.3+ac8e8c594e
+		fabric-textures-v0: Fabric Textures (v0) 1.0.4+eae12eb84e
+		fabric-tool-attribute-api-v1: Fabric Tool Attribute API (v1) 1.2.1+02fb8fda4e
+		fabricloader: Fabric Loader 0.9.2+build.206
+		minecraft: Minecraft 1.16.2
+		swimair: Swim Air 1.0.0
+	Player Count: 1 / 8; [ServerPlayerEntity['Player60'/206, l='ServerLevel[New World]', x=-72.50, y=64.00, z=-236.50]]
+	Data Packs: vanilla, fabric/fabric-tool-attribute-api-v1
+	Type: Integrated Server (map_client.txt)
+	Is Modded: Definitely; Client brand changed to 'fabric'
